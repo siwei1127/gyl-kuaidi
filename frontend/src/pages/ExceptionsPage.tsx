@@ -13,7 +13,7 @@ import { Label } from '@/components/ui/label';
 import { Select } from '@/components/ui/select';
 import { Textarea } from '@/components/ui/textarea';
 import { axiosForBackend } from '@/lib/axiosForBackend';
-import AntdTable from '@lark-apaas/client-toolkit/antd-table';
+import { Table as AntdTable } from '@lark-apaas/client-toolkit/antd-table';
 
 export default function ExceptionsPage() {
   const [items, setItems] = useState<ExceptionOrderItem[]>([]);
