@@ -6,11 +6,16 @@ import {
   Patch,
   Post,
   Query,
+  BadRequestException,
+  UploadedFile,
+  UseInterceptors,
 } from '@nestjs/common';
+import { FileInterceptor } from '@nestjs/platform-express';
 
 import {
   CreateReconciliationBatchBody,
   CreateReconciliationBatchResponse,
+  ImportReconciliationBatchResponse,
   ReconciliationBatchListItem,
   ReconciliationBatchListQuery,
   UpdateBatchStatusBody,
@@ -52,5 +57,18 @@ export class ReconciliationBatchesController {
   ): Promise<UpdateBatchStatusResponse> {
     await this.service.updateStatus(id, body.status);
     return { success: true };
+  }
+
+  @Post(':id/import')
+  @UseInterceptors(FileInterceptor('file'))
+  async importOrders(
+    @Param('id') id: string,
+    @UploadedFile() file?: Express.Multer.File,
+  ): Promise<ImportReconciliationBatchResponse> {
+    if (!file?.buffer) {
+      throw new BadRequestException('File is required.');
+    }
+
+    return this.service.importOrders(id, file.buffer);
   }
 }

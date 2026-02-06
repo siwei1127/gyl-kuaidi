@@ -63,6 +63,11 @@ export async function initDatabase() {
       updated_at timestamptz NOT NULL DEFAULT now()
     );
   `);
+
+  await pool.query(`
+    ALTER TABLE order_detail
+    ADD COLUMN IF NOT EXISTS raw_data jsonb;
+  `);
 }
 
 if (require.main === module) {

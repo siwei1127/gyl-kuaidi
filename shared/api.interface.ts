@@ -39,9 +39,16 @@ export interface UpdateBatchStatusResponse {
   success: boolean;
 }
 
+export interface ImportReconciliationBatchResponse {
+  success: boolean;
+  insertedCount: number;
+  skippedCount: number;
+}
+
 export type ExceptionConclusion = 'pending' | 'approved' | 'rejected';
 
 export interface OrderExceptionsQuery extends PaginationQuery {
+  batchId?: string;
   courier?: string;
   exceptionType?: string;
   minDiff?: number;

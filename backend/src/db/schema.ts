@@ -2,6 +2,7 @@ import {
   boolean,
   doublePrecision,
   integer,
+  jsonb,
   pgEnum,
   pgTable,
   text,
@@ -65,6 +66,7 @@ export const orderDetailTable = pgTable('order_detail', {
   exceptionTypes: text('exception_types').array().notNull().default([]),
   conclusion: text('conclusion').notNull().default('pending'),
   processingNote: text('processing_note'),
+  rawData: jsonb('raw_data').$type<Record<string, unknown> | null>(),
   createdAt: timestamp('created_at', { withTimezone: true })
     .notNull()
     .defaultNow(),
