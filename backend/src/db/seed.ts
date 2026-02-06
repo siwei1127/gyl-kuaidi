@@ -3,6 +3,7 @@ import 'dotenv/config';
 import { randomUUID } from 'crypto';
 
 import { db } from './index';
+import { initDatabase } from './init';
 import {
   orderDetailTable,
   pricingRuleTable,
@@ -83,6 +84,7 @@ function buildBatchSummary(batchId: string) {
 }
 
 async function seed() {
+  await initDatabase();
   await db.delete(orderDetailTable);
   await db.delete(reconciliationBatchTable);
   await db.delete(pricingRuleTable);
