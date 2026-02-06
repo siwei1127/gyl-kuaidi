@@ -1,0 +1,15 @@
+{
+  "name": "gyl-kuaidi",
+  "private": true,
+  "workspaces": [
+    "apps/*",
+    "shared"
+  ],
+  "scripts": {
+    "build": "npm run -ws build",
+    "dev": "npm run -ws dev",
+    "lint": "npm run -ws lint",
+    "test": "npm run -ws test"
+  }
+}
+
