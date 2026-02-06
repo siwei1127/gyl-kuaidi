@@ -2,10 +2,10 @@
   "name": "backend",
   "version": "1.0.0",
   "description": "",
-  "main": "dist/main.js",
+  "main": "dist/backend/src/main.js",
   "scripts": {
     "build": "tsc -p tsconfig.build.json",
-    "start": "node dist/main.js",
+    "start": "node dist/backend/src/main.js",
     "start:dev": "ts-node-dev --respawn --transpile-only src/main.ts",
     "db:init": "ts-node src/db/init.ts",
     "seed": "ts-node src/db/seed.ts",

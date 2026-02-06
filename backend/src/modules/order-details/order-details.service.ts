@@ -11,6 +11,7 @@ import {
 
 import {
   BatchUpdateOrdersBody,
+  ExceptionConclusion,
   OrderExceptionsQuery,
   OrderExceptionsResponse,
 } from '../../../../shared/api.interface';
@@ -85,6 +86,7 @@ export class OrderDetailsService {
         shippingDate: row.shippingDate.toISOString(),
         exceptionTypes: row.exceptionTypes ?? [],
         processingNote: row.processingNote ?? null,
+        conclusion: row.conclusion as ExceptionConclusion,
       })),
       total: Number(total ?? 0),
     };
